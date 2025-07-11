@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UEMS</title>
+  <link rel="stylesheet" href="login_output.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+  <style>
+    body, input, textarea, select, button {
+      font-family: 'Roboto', Arial, sans-serif !important;
+    }
+    .logo-box {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .logo-box img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      margin-bottom: 0rem;
+    }
+    .login-container h2 {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 1.8rem;
+      color: #2f2f2f;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      font-family: 'Roboto', Arial, sans-serif;
+    }
+    .login-container {
+      opacity: 0;
+      transform: translateY(40px) scale(0.98);
+      animation: login-intro 0.85s cubic-bezier(.22,.68,.37,1.13) 0.05s both;
+    }
+    @keyframes login-intro {
+      0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.98);
+      }
+      70% {
+        opacity: 1;
+        transform: translateY(-5px) scale(1.02);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .login-error {
+      color: red;
+      margin-top: 10px;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <form class="login-container" id="loginForm" autocomplete="on">
+    <div class="logo-box">
+      <img src="mc6logo.png" alt="Logo">
+      <h2>Unserviceable Equipment Monitoring System</h2>
+    </div>
+
+    <label for="userid">Username</label>
+    <input type="text" id="userid" name="userid" required autocomplete="username">
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required autocomplete="current-password">
+
+    <button type="submit"><span>Login</span></button>
+    <div class="login-error" id="loginError"></div>
+  </form>
+  <!-- <script>
+    // Save last username on input
+    document.getElementById('userid').addEventListener('input', function() {
+      localStorage.setItem('lastUEMSUser', this.value);
+    });
+    // Restore last username on load
+    window.addEventListener('DOMContentLoaded', function() {
+      let last = localStorage.getItem('lastUEMSUser');
+      if (last) document.getElementById('userid').value = last;
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const errorDiv = document.getElementById('loginError');
+      errorDiv.style.display = 'none';
+      const form = e.target;
+      const formData = new FormData(form);
+      try {
+        const res = await fetch('api/login.php', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+        if (data.success) {
+          window.location.href = data.redirect || "homepage.php";
+        } else {
+          errorDiv.textContent = data.error || "Invalid username or password.";
+          errorDiv.style.display = 'block';
+          // Optionally, keep the last entered username
+        }
+      } catch (err) {
+        errorDiv.textContent = "Network error. Please try again.";
+        errorDiv.style.display = 'block';
+      }
+    });
+  </script> -->
+</body>
+</html>
