@@ -105,7 +105,8 @@
     <span class="footer-muted">UEMS © Philippine Marine Corps 2025</span>
   </footer>
 </div>
-<!-- <script src="homepagejs.js"></script>
-<script src="sidebar-active.js"></script> -->
+<script src="add_equipment.js"></script>
+
+
 </body>
 </html>

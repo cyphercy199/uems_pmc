@@ -71,7 +71,7 @@
     <button type="submit"><span>Login</span></button>
     <div class="login-error" id="loginError"></div>
   </form>
-  <!-- <script>
+  <script>
     // Save last username on input
     document.getElementById('userid').addEventListener('input', function() {
       localStorage.setItem('lastUEMSUser', this.value);
@@ -89,13 +89,13 @@
       const form = e.target;
       const formData = new FormData(form);
       try {
-        const res = await fetch('api/login.php', {
+        const res = await fetch('api/#.php', {
           method: 'POST',
           body: formData
         });
         const data = await res.json();
         if (data.success) {
-          window.location.href = data.redirect || "homepage.php";
+          window.location.href = data.redirect || "dashboard.php";
         } else {
           errorDiv.textContent = data.error || "Invalid username or password.";
           errorDiv.style.display = 'block';
@@ -106,6 +106,6 @@
         errorDiv.style.display = 'block';
       }
     });
-  </script> -->
+  </script>
 </body>
 </html>
